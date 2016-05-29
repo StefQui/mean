@@ -2,7 +2,7 @@
 
   angular
   .module('templates')
-  .directive('chooseType', ['$rootScope', '$uibModal', function AddOp($rootScope, $uibModal) {
+  .directive('chooseTemplate', ['$rootScope', '$uibModal', function AddOp($rootScope, $uibModal) {
     var directive = {
       restrict: 'E',
       link: link,
