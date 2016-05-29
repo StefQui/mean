@@ -1,5 +1,11 @@
 <section>
-  <div class="page-header">
+<br/>
+   <div>
+  <a class="btn btn-success" ui-sref="articles.list">
+      <i class="glyphicon glyphicon-list"></i> Retour à la liste
+    </a>
+  </div>
+ <div class="page-header">
     <h1 ng-bind="vm.article.title"></h1>
   </div>
   <div class="pull-right" ng-show="vm.article.isCurrentUserOwner">
@@ -17,7 +23,26 @@
       by
       <span ng-if="vm.article.user" ng-bind="vm.article.user.displayName"></span>
       <span ng-if="!vm.article.user">Deleted User</span>
+      Id={{vm.article._id}}
     </em>
   </small>
   <p class="lead" ng-bind="vm.article.content"></p>
+  {{vm.article.operand | json }}
+  <op-viewer op="vm.article.operand"></op-viewer>
+  <hr/>
+<pre>{{vm.article.content}}</pre>
+<pre>{{vm.precompiled}}</pre>
+<pre>{{vm.build}}</pre>
+  <hr/>
+
+  <p>root:{{root}} and {{vm.root}}</p>
+  <p>stef:{{stef}}</p>
+  <p>bate:{{beta}}</p>
+  <p>AA from controller:{{AA}}</p>
+  <p>AA from vm:{{vm.AA}}</p>
+
+<div html-compiler="precompiled"></div>
+<div html-compiler="build"></div>
+<hr/>
+<!-- <html-compiler html="{{vm.build}}"></html-compiler> -->
 </section>

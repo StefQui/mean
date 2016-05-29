@@ -1,0 +1,32 @@
+<section>
+<br/>
+   <div>
+  <a class="btn btn-success" ui-sref="templates.list">
+      <i class="glyphicon glyphicon-list"></i> Retour à la liste
+    </a>
+  </div>
+ <div class="page-header">
+    <h1 ng-bind="vm.template.title"></h1>
+  </div>
+  <div class="pull-right" ng-show="vm.template.isCurrentUserOwner">
+    <a class="btn btn-primary" ui-sref="templates.edit({ templateId: vm.template._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.template.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.template.user" ng-bind="vm.template.user.displayName"></span>
+      <span ng-if="!vm.template.user">Deleted User</span>
+      Id={{vm.template._id}}
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.template.content"></p>
+ <!-- <html-compiler html="{{vm.build}}"></html-compiler> -->
+</section>
+

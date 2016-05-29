@@ -1,7 +1,7 @@
 module.exports = {
-  extends: [
-    'airbnb/legacy'
-  ],
+  // extends: [
+  //   'airbnb/legacy'
+  // ],
   rules: {
     camelcase: 0,
     'comma-dangle': [2, 'never'],

@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Template Schema
  */
-var ArticleSchema = new Schema({
+var Templateschema = new Schema({
   created: {
     type: Date,
     default: Date.now
@@ -25,18 +25,10 @@ var ArticleSchema = new Schema({
     default: '',
     trim: true
   },
-  compiled: {
-    type: String,
-    default: '',
-    trim: true
-  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
-  },
-  operand: {
-    type: Schema.Types.Mixed
   }
 });
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Template', Templateschema);

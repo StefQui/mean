@@ -1,0 +1,24 @@
+<section>
+  <div class="page-header">
+    <h1>Mes Templates</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="template in vm.templates" ui-sref="templates.view({ templateId: template._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="template.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="template.user" ng-bind="template.user.displayName"></span>
+        <span ng-if="!template.user">Deleted User</span>
+        <span >{{template._id}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="template.title"></h4>
+      <p class="list-group-item-text" ng-bind="template.content"></p>
+        {{template.operand | json }}
+
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.templates.$resolved && !vm.templates.length">
+    No Templates yet, why don't you <a ui-sref="templates.create">create one</a>?
+  </div>
+</section>

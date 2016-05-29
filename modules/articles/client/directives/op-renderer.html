@@ -1,0 +1,23 @@
+<div>
+<div ng-show="op.type === 'constText'">
+<div style="width:800px;overflow:auto">
+<pre>{{op.textConst}}</pre>
+</div>
+</div>
+<div ng-show="op.type === 'markup'">
+<div style="width:800px;overflow:auto">
+<pre>{{op.markup}}</pre>
+</div>
+</div>
+
+<table class="table">
+<tr ng-repeat="operand in op.operands">
+<td>
+{{operand.key}}
+</td>
+<td>
+{{operand.type}}
+</td>
+</tr>
+</table>
+</div>

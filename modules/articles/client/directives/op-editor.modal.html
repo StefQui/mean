@@ -1,0 +1,32 @@
+
+        <div class="modal-header">
+            <h3 class="modal-title">
+            <span ng-show="operand.type === 'constText'">Modification d'une constante texte</span>
+            <span ng-show="operand.type === 'markup'">Modification d'un markup</span>
+</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+
+            Key: <input type="text" ng-model="operand.key"/>
+<div ng-show="operand.type === 'constText'">
+<div ng-include="'modules/articles/client/views/opform-constText.html'"></div>
+</div>
+<div ng-show="operand.type === 'markup'">
+<div ng-include="'modules/articles/client/views/opform-markup.html'"></div>
+</div>
+<div ng-show="operand.type === 'variable'">
+<div ng-include="'modules/articles/client/views/opform-variable.html'"></div>
+</div>
+{{operand | json}}
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">Enregistrer</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+ 

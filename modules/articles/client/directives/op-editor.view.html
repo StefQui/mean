@@ -1,0 +1,19 @@
+<div style="border:2px dashed pink;">
+    <div ng-show="op"><p>Il y a un op {{op | json}}</p>
+    <p>Key : {{op.key}}</p>
+    <div class="form-group">
+          <button type="submit" class="btn btn-default" ng-click="$event.preventDefault();edit(op)">Modifier</button>
+        </div>
+        <div ng-show="showremove">
+
+    <div class="form-group">
+          <button type="submit" class="btn btn-default" ng-click="$event.preventDefault();removeOp(op)">Supprimer</button>
+        </div>
+        </div>
+  <op-renderer op="op"></op-renderer>
+</div>
+    <div ng-hide="op">Il n'y a pas de op
+  <choose-type update="updateOp(operand)"></choose-type>
+    </div>
+Index:{{ind}}
+        </div>

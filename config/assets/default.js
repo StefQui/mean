@@ -18,7 +18,8 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-file-upload/dist/angular-file-upload.js',
-        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js'
+        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/mustache/mustache.min.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
@@ -36,7 +37,8 @@ module.exports = {
       'modules/core/client/app/config.js',
       'modules/core/client/app/init.js',
       'modules/*/client/*.js',
-      'modules/*/client/**/*.js'
+      'modules/*/client/**/*.js',
+      'modules/*/client/**/**/*.js'
     ],
     img: [
       'modules/**/*/img/**/*.jpg',
@@ -44,7 +46,10 @@ module.exports = {
       'modules/**/*/img/**/*.gif',
       'modules/**/*/img/**/*.svg'
     ],
-    views: ['modules/*/client/views/**/*.html'],
+    views: [
+      'modules/*/client/views/**/*.html',
+      'modules/*/client/views/**/**/*.html'
+    ],
     templates: ['build/templates.js']
   },
   server: {

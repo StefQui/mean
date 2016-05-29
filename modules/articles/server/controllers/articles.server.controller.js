@@ -48,6 +48,8 @@ exports.update = function (req, res) {
 
   article.title = req.body.title;
   article.content = req.body.content;
+  article.operand = req.body.operand;
+  article.compiled = req.body.compiled;
 
   article.save(function (err) {
     if (err) {

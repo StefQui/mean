@@ -2,15 +2,15 @@
   'use strict';
 
   angular
-    .module('articles')
-    .controller('ArticlesController', ArticlesController);
+    .module('templates')
+    .controller('TemplatesController', TemplatesController);
 
-  ArticlesController.$inject = ['operandService', '$rootScope', '$scope', '$state', 'articleResolve', '$window', 'Authentication', '$compile'];
+  TemplatesController.$inject = ['$rootScope', '$scope', '$state', 'templateResolve', '$window', 'Authentication', '$compile'];
 
-  function ArticlesController(operandService, $rootScope, $scope, $state, article, $window, Authentication, $compile) {
+  function TemplatesController($rootScope, $scope, $state, template, $window, Authentication, $compile) {
     var vm = this;
 
-    vm.article = article;
+    vm.template = template;
     vm.authentication = Authentication;
     vm.error = null;
     vm.form = {};
@@ -19,8 +19,8 @@
     vm.AA='BBB';
     // $rootScope.root='myroot';
 
-    // angular.each(article.operand)
-    // vm.precompiled = $compile(article.content)($scope);
+    // angular.each(template.operand)
+    // vm.precompiled = $compile(template.content)($scope);
 
 
     // vm.calculatePreCompiled = function(op, build) {
@@ -61,58 +61,41 @@
     //     }
     //   }
     // }
-    // vm.precompiled = vm.calculatePreCompiled(vm.article.operand, false);
-    var refresCompiled= function() {
-      vm.article.compiled = operandService.transform(vm.article.operand, false);
-      $scope.build = operandService.transform(vm.article.operand, true);
-    }
-
-    $scope.root='start';
-    refresCompiled();
-    // if (vm.article.operand) {
-    //   vm.precompiled = operandService.transform(vm.article.operand, false);
-    //   vm.article.compiled = operandService.transform(vm.article.operand, false);
-    //   $scope.compiled = operandService.transform(vm.article.operand, false);
-    //   $scope.build = operandService.transform(vm.article.operand, true);
-    // }
-    // vm.build = vm.calculatePreCompiled(vm.article.operand, true);
-    // vm.precompiled = $scope.precompiled;
-
+    // vm.precompiled = vm.calculatePreCompiled(vm.template.operand, false);
 
     vm.create = function(type) {
       console.log('AAcreateeeeeee' + type);
     }
     vm.update = function(operand) {
       console.log('BBcreateeeeeee' + operand);
-      vm.article.operand = operand;
-      refresCompiled();
-      // vm.precompiled = operandService.transform(vm.article.operand, false);
-      // vm.build = operandService.transform(vm.article.operand, true);
+      vm.template.operand = operand;
+      // vm.precompiled = operandService.transform(vm.template.operand, false);
+      // vm.build = operandService.transform(vm.template.operand, true);
     }
-    // Remove existing Article
+    // Remove existing Template
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
-        vm.article.$remove($state.go('articles.list'));
+        vm.template.$remove($state.go('templates.list'));
       }
     }
 
-    // Save Article
+    // Save Template
     function save(isValid) {
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'vm.form.articleForm');
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.templateForm');
         return false;
       }
 
       // TODO: move create/update logic to service
-      if (vm.article._id) {
-        vm.article.$update(successCallback, errorCallback);
+      if (vm.template._id) {
+        vm.template.$update(successCallback, errorCallback);
       } else {
-        vm.article.$save(successCallback, errorCallback);
+        vm.template.$save(successCallback, errorCallback);
       }
 
       function successCallback(res) {
-        $state.go('articles.view', {
-          articleId: res._id
+        $state.go('templates.view', {
+          templateId: res._id
         });
       }
 

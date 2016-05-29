@@ -1,0 +1,17 @@
+			<form name="myform">
+			Markup
+            <textarea ng-model="operand.markup" class="form-control" rows="8"></textarea>
+            <table class="table">
+            <tr ng-repeat="op in operand.operands track by $index">
+            <td>
+            	<op-editor op="op" ind="$index" update-operand="updateLine($index,operand)"></op-editor>
+
+            </td>
+            <td>
+            	<button type="submit" class="btn btn-default" ng-click="removeOpFromList($index)">Supprimer</button>
+            </td>
+            </tr>
+            </table>
+            <choose-type update="createOp(operand)"></choose-type>
+
+            </form>
