@@ -74,7 +74,29 @@ angular
     // $scope.selected = {
     //   item: $scope.items[0]
     // };
+    if ($scope.operand) {
+      if ($scope.operand.args) {
+        console.log()
+        angular.forEach($scope.operand.args, function(arg) {
+          if (angular.isObject(arg)) {
+            arg.editMode = false;
+          }
+        });
+      }
+    }
     $scope.master = angular.copy($scope.operand);
+
+    $scope.removeArg= function(ind) {
+      $scope.operand.args.splice(ind, 1);
+    }
+
+    $scope.editArg= function(ind) {
+      $scope.operand.args[ind].editMode=true;
+    }
+
+    $scope.removeEmitter= function(ind) {
+      $scope.operand.emitters.splice(ind, 1);
+    }
 
     $scope.reset = function() {
       $scope.operand = angular.copy($scope.master);

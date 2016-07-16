@@ -5,7 +5,11 @@
     .module('core')
     .factory('menuService', menuService);
 
-  function menuService() {
+  menuService.$inject = ['OrgasService', 'articleMenuService', 'chatMenuService',
+   'orgaMenuService', 'stefMenuService', 'templateMenuService'];
+
+  function menuService(OrgasService, articleMenuService, chatMenuService,
+    orgaMenuService, stefMenuService, templateMenuService) {
     var shouldRender;
     var service = {
       addMenu: addMenu,
@@ -17,7 +21,8 @@
       removeMenu: removeMenu,
       removeMenuItem: removeMenuItem,
       removeSubMenuItem: removeSubMenuItem,
-      validateMenuExistance: validateMenuExistance
+      validateMenuExistance: validateMenuExistance,
+      refresh: refresh
     };
 
     init();
@@ -25,6 +30,42 @@
     return service;
 
     // Add new menu object by menu id
+    function refresh() {
+
+      init();
+      console.log('higu'+OrgasService.getCurrentOrga());
+      articleMenuService.fetchMenus(this);
+      chatMenuService.fetchMenus(this);
+      orgaMenuService.fetchMenus(this);
+      stefMenuService.fetchMenus(this);
+      templateMenuService.fetchMenus(this);
+      // if (OrgasService.getCurrentOrga()) {
+      //   addMenuItem('topbar', {
+      //     title: 'Articles',
+      //     state: 'articles',
+      //     type: 'dropdown',
+      //     roles: ['*']
+      //   });
+
+      // // Add the dropdown list item
+      //   addSubMenuItem('topbar', 'articles', {
+      //     title: 'List Articles',
+      //     state: 'articles.list({ orgaShortName: \''+OrgasService.getCurrentOrga().shortName+'\' })'
+      //   });
+
+      // // Add the dropdown create item
+      //   addSubMenuItem('topbar', 'articles', {
+      //     title: 'Create Article',
+      //     state: 'articles.create({ orgaShortName: \''+OrgasService.getCurrentOrga().shortName+'\' })',
+      //     roles: ['user']
+      //   });
+      // }
+
+
+
+
+      // require('modules/articles/client/config/articles.client.routes.js');
+    }
     function addMenu(menuId, options) {
       options = options || {};
 

@@ -13,5 +13,28 @@
             </tr>
             </table>
             <choose-type update="createOp(operand)"></choose-type>
+                              <hr/>
+ <!--                              Arguments
+            <table class="table">
+            <tr ng-repeat="arg in operand.args">
+                  <td>           
+                        <div ng-if="arg.editMode">
+                        {{arg || json}}
+                        </div>
+                        <div ng-if="!arg.editMode">
+                        <textarea class="form-control" rows="4" ng-model="argToAdd"></textarea>
+                        </div>
+                  </td>
+                  <td> 
+                  <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-show="!arg.editMode" ng-click="editArg($index)" ></span>
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeArg($index)"></span>
+            </tr>
+            </table>
+            <textarea class="form-control" rows="4" ng-model="argToAdd"></textarea>
+             <button class="btn" ng-click="operand.args.push(argToAdd);argToAdd=null;">Add arg</button>
+                  <hr/>
+ -->
+          <args-editor op="operand"></args-editor>
+
 
             </form>

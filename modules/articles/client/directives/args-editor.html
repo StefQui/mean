@@ -1,0 +1,41 @@
+<div style="border:2px dashed pink;">
+    <div ng-show="op.args">
+    	<p>Il y a un op {{op.args | json}}</p>
+    	<table class="table">
+    	<tr ng-repeat="arg in op.args">
+    	<td>
+    	<div ng-show="!arg.editMode">
+		    <div ng-show="arg.argType.shortName==='resource'">
+		    Resource
+		    </div>
+		    <div ng-show="arg.argType.shortName==='array'">
+		    Array, Filter = {{arg.filter}}
+		    </div>
+		    <div ng-show="arg.argType.shortName==='selectResourceMethod'">
+		    selectResourceMethod
+		    </div>
+		    <div ng-show="arg.argType.shortName==='removeResourceMethod'">
+		    removeResourceMethod
+		    </div>
+		    <div ng-show="arg.argType.shortName==='saveResourceMethod'">
+		    saveResourceMethod
+		    </div>
+      		Alias : {{arg.alias}}<br/>
+
+    	</div>
+    	<div ng-show="arg.editMode">
+    	<arg-form arg="arg"></arg-form>
+    	</div>
+    	</td>
+    	<td style="width:100px;"><button type="submit" class="btn btn-default" ng-click="$event.preventDefault();editArg($index)">
+    	<span ng-show="!arg.editMode">Modifier</span>
+    	<span ng-show="arg.editMode">Sauver</span>
+    	</button></td>
+    	<td style="width:100px;"><button type="submit" class="btn btn-default" ng-click="$event.preventDefault();removeArg($index)">Supprimer</button></td>
+    	</tr>
+    	</table>
+	</div>
+
+<choose-arg select="createWithArgType(argType)"></choose-arg>
+
+</div>

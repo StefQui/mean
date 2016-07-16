@@ -9,10 +9,26 @@
 
   function routeConfig($stateProvider) {
     $stateProvider
+      .state('orgahome', {
+        url: '/org/:orgaShortName',
+        // template: '<div>home{{hello}}</div>',
+        templateUrl: 'modules/orgas/client/views/orga-home.html',
+        controller: 'OrgaUrlController'
+        // ,
+          // $scope.hello='hello2';
+          // $scope.contacts = [{ id:0, name: "Alice" }, { id:1, name: "Bob" }];
+        // }
+      })
       .state('articles', {
         abstract: true,
-        url: '/articles',
-        template: '<ui-view/>'
+        url: '/org/:orgaShortName/articles',
+        // template: '',
+        templateUrl: 'modules/orgas/client/views/orga-container.html',
+        controller: 'OrgaUrlController'
+        // ,
+          // $scope.hello='hello2';
+          // $scope.contacts = [{ id:0, name: "Alice" }, { id:1, name: "Bob" }];
+        // }
       })
       .state('articles.list', {
         url: '',

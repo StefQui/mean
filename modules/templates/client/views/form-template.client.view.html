@@ -12,6 +12,13 @@
             <p class="help-block error-text" ng-message="required">Template title is required.</p>
           </div>
         </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="shortName">Short name</label>
+          <input name="shortName" type="text" ng-model="vm.template.shortName" id="shortName" class="form-control" placeholder="Short name" required>
+          <div ng-messages="vm.form.templateForm.shortName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Template shortName is required.</p>
+          </div>
+        </div>
         <div class="form-group">
           <label class="control-label" for="content">Content</label>
           <textarea name="content" data-ng-model="vm.template.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>

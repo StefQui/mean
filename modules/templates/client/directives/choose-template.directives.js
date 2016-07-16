@@ -7,7 +7,7 @@
       restrict: 'E',
       link: link,
       scope: {
-        update: '&'
+        choose: '&'
       },
       templateUrl: 'modules/templates/client/directives/choose-template.html',
       controller: 'ChooseTemplateCtrl'
@@ -25,56 +25,25 @@
     //   template: '<p>addop</p>'
     // }
   }])
-  .controller('ChooseTemplateCtrl', ['$scope', '$uibModal', function($scope, $uibModal) {
+  .controller('ChooseTemplateCtrl', ['$scope', '$uibModal', 'TemplatesService', function($scope, $uibModal, TemplatesService) {
     // $scope.create = create;
-    $scope.types = [{
-      shortName: 'constText',
-      name: 'Constante texte'
-    },
-    {
-      shortName: 'markup',
-      name: 'Markup'
-    },
-    {
-      shortName: 'variable',
-      name: 'Lien vers une variable'
-    }
-      ];
+    $scope.templates = TemplatesService.query();
+    // $scope.templates = [{
+    //   shortName: 'constText',
+    //   name: 'Constante texte'
+    // },
+    // {
+    //   shortName: 'markup',
+    //   name: 'Markup'
+    // },
+    // {
+    //   shortName: 'variable',
+    //   name: 'Lien vers une variable'
+    // }
+    //   ];
 
-    $scope.selectType = function(type) {
-      console.log('selecttype...' + type.shortName);
-      var modalInstance = $uibModal.open({
-        animation: $scope.animationsEnabled,
-        templateUrl: 'modules/templates/client/directives/op-editor.modal.html',
-        controller: 'OpEditorModalCtrl',
-        size: 'lg',
-        resolve: {
-          items: function () {
-            return $scope.items;
-          },
-          operand: function () {
-            return {
-              type: type.shortName,
-              name: ''
-            };
-            // console.log('creatone:' + newOne.name);
-            // return newOne;
-          },
-          index: function () {
-            return null;
-          }
-        }
-      });
-
-      modalInstance.result.then(function (data) {
-        console.log('save op: ' + data.operand);
-        // $scope.selected = data.selectedItem;
-        // $scope.ngModel = data.operand;
-        $scope.update({ operand: data.operand });
-      }, function () {
-        console.log('Modal dismissed at: ' + new Date());
-      });
-
-      // $scope.create(type);
+    $scope.selectTemplate = function(template) {
+      console.log('selecttemplate...' + template.title);
+      $scope.choose({ template: template });
     }
   }]);

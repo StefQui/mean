@@ -36,6 +36,18 @@
       name: 'Markup'
     },
     {
+      shortName: 'create',
+      name: 'Create'
+    },
+    {
+      shortName: 'list',
+      name: 'Liste'
+    },
+    {
+      shortName: 'form',
+      name: 'Formulaire'
+    },
+    {
       shortName: 'variable',
       name: 'Lien vers une variable'
     }
@@ -55,6 +67,8 @@
           operand: function () {
             return {
               type: type.shortName,
+              emitters: [],
+              args: [],
               name: ''
             };
             // console.log('creatone:' + newOne.name);

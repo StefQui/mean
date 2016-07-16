@@ -1,0 +1,17 @@
+			<form name="myform">
+			{{operand.type}}
+			Emitters 
+			<ul>
+			<li ng-repeat="emitter in operand.emitters">
+			{{emitter}}
+            <button class="btn" ng-click="$event.preventDefault();removeEmitter($index)">Remove</button>
+			</li>
+			</ul>
+			<hr/>
+            <input type="text" ng-model="emitterToAdd"/> <button class="btn" ng-click="operand.emitters.push(emitterToAdd)">Add emitter</button>
+
+           Formulaire:
+           <textarea ng-model="operand.compiled" class="form-control" cols="30" rows="10" placeholder="Compiled"></textarea>
+
+
+            </form>

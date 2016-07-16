@@ -9,10 +9,22 @@
 
   function routeConfig($stateProvider) {
     $stateProvider
+      // .state('stef', {
+      //   abstract: true,
+      //   url: '/org/:orgaShortName/stef',
+      //   // template: '',
+      //   templateUrl: 'modules/orgas/client/views/orga-container.html',
+      //   controller: 'OrgaUrlController'
+      //   // ,
+      //     // $scope.hello='hello2';
+      //     // $scope.contacts = [{ id:0, name: "Alice" }, { id:1, name: "Bob" }];
+      //   // }
+      // })
       .state('templates', {
         abstract: true,
-        url: '/templates',
-        template: '<ui-view/>'
+        url: '/org/:orgaShortName/templates',
+        templateUrl: 'modules/orgas/client/views/orga-container.html',
+        controller: 'OrgaUrlController'
       })
       .state('templates.list', {
         url: '',
@@ -66,14 +78,17 @@
   getTemplate.$inject = ['$stateParams', 'TemplatesService'];
 
   function getTemplate($stateParams, TemplatesService) {
-    return TemplatesService.get({
+    return TemplatesService.getResource().get({
       templateId: $stateParams.templateId
     }).$promise;
   }
 
-  newTemplate.$inject = ['TemplatesService'];
+  newTemplate.$inject = ['TemplatesService', 'OrgasService'];
 
-  function newTemplate(TemplatesService) {
-    return new TemplatesService();
+  function newTemplate(TemplatesService, OrgasService) {
+    var res = new (TemplatesService.getResource());
+    console.log('OrgasService.getCurrentOrga()=='+OrgasService.getCurrentOrga());
+    // res.orga = OrgasService.getCurrentOrga();
+    return res;
   }
 }());

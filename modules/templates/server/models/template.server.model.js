@@ -20,6 +20,12 @@ var Templateschema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
+  shortName: {
+    type: String,
+    default: '',
+    trim: true,
+    required: 'ShortName cannot be blank'
+  },
   content: {
     type: String,
     default: '',
@@ -28,6 +34,10 @@ var Templateschema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  orga: {
+    type: Schema.ObjectId,
+    ref: 'Orga'
   }
 });
 

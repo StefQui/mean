@@ -1,0 +1,24 @@
+<section>
+  <div class="page-header">
+    <h1>Mes Orgas</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="orga in vm.orgas" ui-sref="orgas.view({ orgaId: orga._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="orga.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="orga.user" ng-bind="orga.user.displayName"></span>
+        <span ng-if="!orga.user">Deleted User</span>
+        <span >{{orga._id}}</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="orga.title"></h4>
+      <p class="list-group-item-text" ng-bind="orga.shortName"></p>
+      <p class="list-group-item-text" ng-bind="orga.content"></p>
+
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.orgas.$resolved && !vm.orgas.length">
+    No orgas yet, why don't you <a ui-sref="orgas.create">create one</a>?
+  </div>
+</section>

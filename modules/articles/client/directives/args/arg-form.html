@@ -1,0 +1,23 @@
+    <choose-arg val="arg.argType" select="selectArgTy(argType)"></choose-arg>
+     <div ng-show="arg.argType.shortName==='resource'">
+    Resource
+    </div>
+    <div ng-show="arg.argType.shortName==='array'">
+    Filter:<textarea ng-model="arg.filter" class="form-control" rows="6"></textarea>
+    </div>
+    <div ng-show="arg.argType.shortName==='selectResourceMethod'">
+    Selected name:<input class="form-control" ng-model="arg.selectedAlias" style="width:200px;"/>
+
+    </div>
+    <div ng-show="arg.argType.shortName==='removeResourceMethod'">
+
+    </div>
+    <div ng-show="arg.argType.shortName==='saveResourceMethod'">
+
+    </div>
+    <div ng-show="arg.argType.shortName==='crud'">
+
+    </div>
+    Alias:<input class="form-control" ng-model="arg.alias" style="width:200px;"/>
+
+

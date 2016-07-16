@@ -5,7 +5,10 @@
     .module('core')
     .controller('HomeController', HomeController);
 
-  function HomeController() {
-    var vm = this;
+  HomeController.$inject = ['OrgasService', '$scope'];
+
+  function HomeController(OrgasService, $scope) {
+    OrgasService.initOrga(null);
+    $scope.orgas = OrgasService.getResource().query();
   }
 }());

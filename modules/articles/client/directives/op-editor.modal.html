@@ -22,6 +22,15 @@
 <div ng-show="operand.type === 'variable'">
 <div ng-include="'modules/articles/client/views/opform-variable.html'"></div>
 </div>
+<div ng-show="operand.type === 'create'">
+<div ng-include="'modules/articles/client/views/opform-create.html'"></div>
+</div>
+<div ng-show="operand.type === 'list'">
+<div ng-include="'modules/articles/client/views/opform-list.html'"></div>
+</div>
+<div ng-show="operand.type === 'form'">
+<div ng-include="'modules/articles/client/views/opform-form.html'"></div>
+</div>
 {{operand | json}}
 
         </div>

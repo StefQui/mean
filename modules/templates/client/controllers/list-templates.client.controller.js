@@ -10,6 +10,6 @@
   function TemplatesListController(TemplatesService) {
     var vm = this;
 
-    vm.templates = TemplatesService.query();
+    vm.templates = TemplatesService.getResource().query();
   }
 }());

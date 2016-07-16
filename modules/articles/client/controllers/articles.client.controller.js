@@ -5,9 +5,9 @@
     .module('articles')
     .controller('ArticlesController', ArticlesController);
 
-  ArticlesController.$inject = ['operandService', '$rootScope', '$scope', '$state', 'articleResolve', '$window', 'Authentication', '$compile'];
+  ArticlesController.$inject = ['operandService', 'ResourcesService', '$rootScope', '$scope', '$state', 'articleResolve', '$window', 'Authentication', '$compile'];
 
-  function ArticlesController(operandService, $rootScope, $scope, $state, article, $window, Authentication, $compile) {
+  function ArticlesController(operandService, ResourcesService, $rootScope, $scope, $state, article, $window, Authentication, $compile) {
     var vm = this;
 
     vm.article = article;
@@ -16,9 +16,10 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-    vm.AA='BBB';
+    vm.AA='BBBBZ';
     // $rootScope.root='myroot';
 
+    $scope.resources = [];
     // angular.each(article.operand)
     // vm.precompiled = $compile(article.content)($scope);
 
@@ -64,7 +65,9 @@
     // vm.precompiled = vm.calculatePreCompiled(vm.article.operand, false);
     var refresCompiled= function() {
       vm.article.compiled = operandService.transform(vm.article.operand, false);
+      // vm.article.compiled = vm.article.markup;
       $scope.build = operandService.transform(vm.article.operand, true);
+      // $scope.elbuild = operandService.transformElement(vm.article.operand, true);
     }
 
     $scope.root='start';
@@ -77,6 +80,47 @@
     // }
     // vm.build = vm.calculatePreCompiled(vm.article.operand, true);
     // vm.precompiled = $scope.precompiled;
+
+    // $scope.oncreated = function(toto) {
+    //   console.log('YES');
+    // }
+    $scope.AA='TOP';
+
+    $scope.sendEvent = function(event) {
+      $scope.smevent = event;
+    }
+    $scope.zzzzzzzzinitList = function(attrs) {
+      $scope.$watch('smevent', function() {
+        if ($scope.smevent) {
+          if ($scope[attrs.path].currentEmitters.indexOf($scope.smevent.emitter) > -1) {
+            $scope[attrs.path].refresh();
+          }
+        }
+      });
+      console.log('init list ctrl'+attrs.path);
+      $scope[attrs.path]={};
+      $scope[attrs.path].refresh = function() {
+        $scope.resources = ResourcesService.query();
+      }
+      $scope[attrs.path].refresh();
+      $scope[attrs.path].removeResource = function(resource) {
+        resource.$remove(function() {
+          console.log('remove done');
+          $scope[attrs.path].refresh();
+        });
+      }
+      $scope[attrs.path].selectResource = function(resource) {
+        $scope.sendEvent({
+          smevent:
+          {
+            eventType: 'resourceSelect',
+            resource: resource,
+            emitter: $scope[$scope.currentPath].currentPath
+          }
+        })
+      }
+
+    }
 
 
     vm.create = function(type) {

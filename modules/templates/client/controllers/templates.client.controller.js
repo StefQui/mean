@@ -5,9 +5,9 @@
     .module('templates')
     .controller('TemplatesController', TemplatesController);
 
-  TemplatesController.$inject = ['$rootScope', '$scope', '$state', 'templateResolve', '$window', 'Authentication', '$compile'];
+  TemplatesController.$inject = ['$rootScope', '$scope', '$state', 'templateResolve', '$window', 'Authentication', '$compile', 'OrgasService'];
 
-  function TemplatesController($rootScope, $scope, $state, template, $window, Authentication, $compile) {
+  function TemplatesController($rootScope, $scope, $state, template, $window, Authentication, $compile, OrgasService) {
     var vm = this;
 
     vm.template = template;
@@ -90,6 +90,7 @@
       if (vm.template._id) {
         vm.template.$update(successCallback, errorCallback);
       } else {
+        vm.template.orga = OrgasService.getCurrentOrga();
         vm.template.$save(successCallback, errorCallback);
       }
 

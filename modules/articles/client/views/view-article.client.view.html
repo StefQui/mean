@@ -30,19 +30,14 @@
   {{vm.article.operand | json }}
   <op-viewer op="vm.article.operand"></op-viewer>
   <hr/>
-<pre>{{vm.article.content}}</pre>
-<pre>{{vm.precompiled}}</pre>
-<pre>{{vm.build}}</pre>
-  <hr/>
 
-  <p>root:{{root}} and {{vm.root}}</p>
-  <p>stef:{{stef}}</p>
-  <p>bate:{{beta}}</p>
-  <p>AA from controller:{{AA}}</p>
-  <p>AA from vm:{{vm.AA}}</p>
+  <!-- <p>$scope.smevent:{{smevent | json}}</p> -->
+  <p>$scope.mystef:{{mytest}}</p>
+  <p>$scope.smevent:{{smevent}}</p>
 
-<div html-compiler="precompiled"></div>
+<!-- <div html-compiler="precompiled"></div> -->
 <div html-compiler="build"></div>
+<!-- <div element-compiler="elbuild"></div> -->
 <hr/>
 <!-- <html-compiler html="{{vm.build}}"></html-compiler> -->
 </section>

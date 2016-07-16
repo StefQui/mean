@@ -1,0 +1,36 @@
+<section>
+<br/>
+   <div>
+  <a class="btn btn-success" ui-sref="orgas.list">
+      <i class="glyphicon glyphicon-list"></i> Retour à la liste
+    </a>
+  </div>
+ <div class="page-header">
+    <h1 ng-bind="vm.orga.title"></h1>
+    <p ng-bind="vm.orga.shortName"></p>
+  </div>
+  <div class="pull-right" ng-show="vm.orga.isCurrentUserOwner">
+    <a class="btn btn-primary" ui-sref="orgas.edit({ orgaId: vm.orga._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.orga.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.orga.user" ng-bind="vm.orga.user.displayName"></span>
+      <span ng-if="!vm.orga.user">Deleted User</span>
+      Id={{vm.orga._id}}
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.orga.content"></p>
+  {{vm.orga.operand | json }}
+  <op-viewer op="vm.orga.operand"></op-viewer>
+  <hr/>
+
+
+</section>

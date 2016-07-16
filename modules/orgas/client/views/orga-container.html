@@ -1,0 +1,7 @@
+<div ng-if="currentOrga">
+<h1>{{hello}}</h1>
+<ui-view/>
+</div>
+<div ng-if="!currentOrga">
+<h1>Erreur: cette organisation n'existe pas</h1>
+</div>

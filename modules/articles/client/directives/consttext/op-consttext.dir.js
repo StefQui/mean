@@ -2,7 +2,7 @@
 
 angular
   .module('articles')
-  .directive('opConsttext', [function OpConstText() {
+  .directive('opConsttext', ['operandService', function OpConstText(operandService) {
     var directive = {
       // scope: {
       //   op: '='
@@ -10,6 +10,7 @@ angular
       // transclude: true,
       link: function (scope, element, attrs) {
         console.log('attrsbuild='+attrs.build + ' '+ element.html());
+        operandService.addPath(element, attrs);
         if (attrs.build === undefined) {
           // element.html('<b><u>BUILD</u></b>');
           // element.html('<div style="background:yellow">'+element.html()+'</div>');

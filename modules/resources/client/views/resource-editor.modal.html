@@ -1,0 +1,19 @@
+   <form name="resourceForm" class="form-horizontal" ng-submit="ok(resourceForm.$valid)" novalidate>
+
+        <div class="modal-header">
+            <h3 class="modal-title">
+            <p>Resource d type : {{resource.template.title}}
+</h3>
+        </div>
+        <div class="modal-body">
+
+<div>Nom1:<input ng-model="resource.title"></div>
+
+{{resource | json}}
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+            <button class="btn btn-warning" type="button" ng-click="event.preventDefault();cancel()">Cancel</button>
+        </div>
+        </form>

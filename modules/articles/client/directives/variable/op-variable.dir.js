@@ -2,13 +2,14 @@
 
 angular
   .module('articles')
-  .directive('zzzopVariable', ['ArticlesService', function OpVariable(ArticlesService) {
+  .directive('zzzopVariable', ['ArticlesService', 'operandService', function OpVariable(ArticlesService, operandService) {
     var directive = {
       // transclude: true,
       // templateUrl: 'modules/articles/client/directives/markup/op-markup.html',
       link: function (scope, element, attrs) {
         console.log('attrsbuild='+attrs.build + ' '+ element.html());
         // var articles = ArticlesService.query();
+        operandService.addPath(element, attrs);
         var prom = ArticlesService.get({ articleId: attrs.varid }).$promise;
         prom.then(function(article) {
           element.html('<div html-compiler=\"'+article.compiled+'\"<b>YES</b>"></div>');

@@ -1,0 +1,38 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.orga._id ? 'Edit Orga' : 'New Orga'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.orgaForm" class="form-horizontal" ng-submit="vm.save(vm.form.orgaForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Title</label>
+          <input name="title" type="text" ng-model="vm.orga.title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="vm.form.orgaForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Orga title is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="shortName">ShortName</label>
+          <input name="shortName" type="text" ng-model="vm.orga.shortName" id="shortName" class="form-control" placeholder="Short Name" required>
+          <div ng-messages="vm.form.orgaForm.shortName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Short name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="content">Content</label>
+          <textarea name="content" data-ng-model="vm.orga.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.orga._id ? 'Enregistrer' : 'Create'}}</button>
+        </div>
+        <div html-compiler="vm.orga.compiled"></div>
+
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+    {{vm.orga | json}}
+  </div>
+</section>

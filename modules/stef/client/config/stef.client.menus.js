@@ -9,9 +9,9 @@
 
   function menuConfig(menuService) {
     // Set top bar menu items
-    menuService.addMenuItem('topbar', {
-      title: 'Stef',
-      state: 'stef'
-    });
+    // menuService.addMenuItem('topbar', {
+    //   title: 'Stef',
+    //   state: 'stef'
+    // });
   }
 }());

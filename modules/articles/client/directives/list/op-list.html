@@ -1,0 +1,11 @@
+<div style="border:2px dashed pink;">
+MyTest : <input ng-model="$parent.mytest"/>
+   <table class="table">
+   <tr ng-repeat="resource in resources">
+   <td style="width:100px;">{{resource.template.title}}</td>
+   <td>{{resource.title}}</td>
+  <td style="width:60px;"><button class="btn btn-default" ng-click="removeResource(resource)">remove</button></td>
+  <td style="width:60px;"><button class="btn btn-default" ng-click="selectResource(resource)">modifier</button></td>
+   </tr>
+   </table>
+        </div>
